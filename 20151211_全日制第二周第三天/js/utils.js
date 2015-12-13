@@ -1,5 +1,5 @@
 var utils = {
-    //listToArray:°ÑÀàÊý×é×ª»»ÎªÊý×é
+    //listToArray:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½
     listToArray: function (likeAry) {
         var ary = [];
         try {
@@ -11,7 +11,7 @@ var utils = {
         }
         return ary;
     },
-    //toJSON:°ÑJSON¸ñÊ½µÄ×Ö·û´®×ª»»ÎªJSON¸ñÊ½µÄ¶ÔÏó
+    //toJSON:ï¿½ï¿½JSONï¿½ï¿½Ê½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½×ªï¿½ï¿½ÎªJSONï¿½ï¿½Ê½ï¿½Ä¶ï¿½ï¿½ï¿½
     toJSON: function (str) {
         return "JSON" in window ? JSON.parse(str) : eval("(" + str + ")");
     }
