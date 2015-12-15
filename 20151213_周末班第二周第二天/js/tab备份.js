@@ -102,7 +102,12 @@ for (var i = 0; i < oThs.length; i++) {
     if (oTh.className === "cursor") {
         oTh.index = i;
         oTh.onclick = function () {
-            sortList.call(this, this.index);
+            //this->当前点击的那一列 ->给元素的click绑定一个方法,当点击的时候方法执行,方法中的this是当前点击的那一个元素
+            var a = this;//->a存储的是当前点击的那一列
+            var n = this.index;//->n存储的是当前点击的那一列的索引
+            sortList.call(a, n);//->执行sortList方法让方法中的this变为a,并且给方法传递一个形参值n
+
+            //sortList.call(this,this.index);
         };
     }
 }
