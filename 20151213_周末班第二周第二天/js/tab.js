@@ -44,8 +44,8 @@ function sortList(n) {
     //n:当前点击那一列的索引
     //this->当前点击的那一列 每一次点击的时候都让当前列的flag*=-1
     var _this = this;
-    for (var k = 0; k < oThs.length; k++) {
-        k !== n ? oThs[k].flag = -1 : null;
+    for (var k = 0; k < oThs.length; k++) {//循环列
+        k !== n ? oThs[k].flag = -1 : null;//如果这些列的索引不是当前被点击那个列的索引n，就让它们的flag=-1，否则什么都不做
     }
     _this.flag *= -1;
 
@@ -57,7 +57,7 @@ function sortList(n) {
         //this->window
         var curIn = a.cells[n].innerHTML, nexIn = b.cells[n].innerHTML, curInNum = parseFloat(curIn), nexInNum = parseFloat(nexIn);
         var num = isNaN(curInNum) ? curIn.localeCompare(nexIn) : curInNum - nexInNum;
-        return num * _this.flag;
+        return num * _this.flag;//
     });
 
     //C、按照最新的顺序把每一行重新的添加到页面中
@@ -77,9 +77,9 @@ for (var i = 0; i < oThs.length; i++) {
     var oTh = oThs[i];
     if (oTh.className === "cursor") {
         oTh.index = i;
-        oTh.flag = -1;
+        oTh.flag = -1;//当前点击的标识为-1；
         oTh.onclick = function () {
-            sortList.call(this, this.index);
+            sortList.call(this,this.index);
         };
     }
 }
