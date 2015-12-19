@@ -48,12 +48,12 @@
         var totalTar = win("scrollTop") - 0;//->当前的scrollTop减去目标scrollTop就是我们的总距离
         var step = (totalTar / duration) * interval;//->求出每一步走的步长
         var timer = window.setInterval(function () {
-            var curT = win("scrollTop");
+            var curT = win("scrollTop");//每一次获取下当前卷去高度如果为0时销毁定时器否则继续执行下面代码；
             if (curT <= 0) {
                 window.clearInterval(timer);
                 return;
             }
-            win("scrollTop", curT - step);
+            win("scrollTop", curT - step);//每10毫秒scorllTop当前距离设为curT - step；
         }, interval);
     };
 

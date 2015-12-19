@@ -5,8 +5,10 @@
     <title>sort</title>
 </head>
 <body>
+<ul id="aa"></ul>
 <script type="text/javascript">
     //var ary = [12, 23, 34]; 一维数组
+    var list=document.getElementById("aa");
     var ary = [
         {name: "马丽", age: 18},
         {name: "李晨曦", age: 20},
@@ -15,7 +17,14 @@
         {name: "孙召召", age: 21}
     ];//二维数组
     //需求：按照当前每一项中的年龄由小到大进行排序
-
+    var frg=document.createDocumentFragment();
+      for(var i=0;i<ary.length;i++){
+          var cur=ary[i];
+          var li=document.createElement("li");
+          li.innerHTML=cur;
+      }
+    frg.appendChild(li);
+    list.appendChild(frg);
     //    ary.sort(function (a, b) {
     //        return parseFloat(a.age) - parseFloat(b.age);
     //    });

@@ -120,12 +120,13 @@
 
     function getCss(curEle, attr) {
         var val = null, reg = null;
-        if ("getComputedStyle" in window) {
-            val = window.getComputedStyle(curEle, null)[attr];
+        if ("getComputedStyle" in window) {//如果是IE6~8是不存在getComputedStyle这个属性的
+            val = window.getComputedStyle(curEle, null)[attr];//动态指定属性名
+//            val = window.getComputedStyle(curEle, null).attr;如果加点就代表attr是个固定的属性就不是变量了，其实是个私有变量
         } else {
-            if (attr === "opacity") {
+            if (attr === "opacity") {//IE6~8下获取透明度filter
                 val = curEle.currentStyle["filter"];
-                reg = /^alpha\(opacity=((?:\d|(?:[1-9]\d+))(?:\.\d+)?)\)$/;
+                reg = /^alpha\(opacity=((?:\d|(?:[1-9]\d+))(?:\.\d+)?)\)$/;//"alpha(opacitdy=11.11)"
                 var tempVal = reg.exec(val);
                 val = tempVal ? tempVal[1] / 100 : 1;
             } else {
@@ -136,7 +137,7 @@
         return reg.test(val) ? parseFloat(val) : val;
     }
 
-    var a = getCss(oDiv, "opacity");
+    var a = getCss(oDiv, "opacity");//opacity如果传的属性不加""就会当做变量，把这个变量存的值传给形参，但是没有定义
     console.log(a);
 </script>
 </body>

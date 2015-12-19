@@ -47,13 +47,15 @@
     //    }
 
     //3、如果你已经具体知道了当前的方法在哪个浏览器不兼容,我们只需要判断当前浏览器的类型和版本号进行兼容处理即可
-    var reg = /MSIE +([6-8]\.0)/;
-    if (reg.test(navigator.userAgent)) {
-        //说明是IE6~8的浏览器
-        //不兼容情况下的代码
-    } else {
-        //兼容情况下的代码
-    }
+    var reg = /MSIE (?:[6-8]\.0)/;
+    var ree=reg.exec(navigator.userAgent);
+    console.log(ree);
+//    if (reg.test(navigator.userAgent)) {
+//        //说明是IE6~8的浏览器
+//        //不兼容情况下的代码
+//    } else {
+//        //兼容情况下的代码
+//    }
 
     //    console.log(window.navigator.userAgent);//获取浏览器的版本号信息(字符串)
     //    if(navigator.userAgent.indexOf("Chrome")>-1){
