@@ -17,7 +17,7 @@ img{ width:200px; height:200px; margin:10px; display:block;}
 <img realImg="http://pic1.win4000.com/pic/9/8c/0a08466926.jpg" src="default.gif">
 <img realImg="http://pic1.win4000.com/pic/9/8c/0a08466927.jpg" src="default.gif">
 
-<img realImg="http://pic1.win4000.com/pic/9/8c/0a08466928.jpg" src="default.gif">载
+<img realImg="http://pic1.win4000.com/pic/9/8c/0a08466928.jpg" src="default.gif">
 
 </body>
 </html>
@@ -56,15 +56,15 @@ window.onscroll=function(){
 	
 	}
 	
-}
+};
 
 function loadImg(oImg){
 	var tempImg=new Image;
 		var src=oImg.getAttribute("realImg");
-		src=src+"?"+Math.random();//
+//		src=src+"?"+Math.random();//?号后面加随机数字每次重新加载都会请求服务器下载资源，不从本地缓存中下加载图片
 		tempImg.src=src;
 		oImg.src="o_loading.gif";
-		tempImg.onload=function(){
+		tempImg.onload=function(){//先加载
 			oImg.src=src;
 			oImg.loaded=true;
 			

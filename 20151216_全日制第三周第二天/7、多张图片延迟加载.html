@@ -128,15 +128,21 @@
                 var trueImg = curImg.getAttribute("trueImg");
                 var oImg = new Image;  //创建一个新的img标签oImg
 //                如果curImg直接绑定onload此时图片地址是default图片执行事件，再把假图片地址给此时curImg.src就会改掉默认图片，// 此时显示的是加载不出来的缩劣图
-                oImg.src = trueImg; // 一旦赋值成功就会自动去远程服务器下载这张图片，不需要添加到文档中
-                // 别面出现缩劣图片；如果trueImg里的地址是真实存在的oImg就可以加载，如果不存在onload就不会加载
+                oImg.src = trueImg; // 请求服务器把图片加载到缓存中 但不会出现在网页中
+                // 一旦赋值成功就会自动去远程服务器下载这张图片，不需要添加到文档中
+                // 避免出现缩劣图片；如果trueImg里的地址是真实存在的oImg就可以加载，如果onload加载失败就不会加载
 //                就一直是default图片，如果给curImg直接绑定onload，图片地址不真实存在就会出现缩劣图片
-               oImg.onload = function () {//当图片资源成功的加载到了网页中，则会触发这个事件
+               oImg.onload = function () {//当图片资源成功的加载到了网页中其实是加载到缓存中，如果加载到缓存中成功则会触发这个事件/
 //                   其实这张图片不会显示在网页中，而是在缓存中
                     curImg.src = trueImg;//让这张图片显示在网页中
                     oImg = null;
-                };
-                curImg.isLoad = true;//用来表示图片是否已经成功记载的记号
+                   curImg.isLoad = true;//用来表示图片是否已经成功记载的记号
+                };    //onload是异步加载  先执行140行在执行135行
+//                oImg.onerror=function(){
+//                    curImg.isLoad = false;
+//                };
+
+
                 //加载过的就会有个isLoad的自定义属性值为true
             }
         }
