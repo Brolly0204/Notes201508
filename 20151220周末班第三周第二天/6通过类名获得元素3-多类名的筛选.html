@@ -26,6 +26,7 @@
             <li class="tab promoted">选项五</li>
              <li class="tab  promoted ab">选项五ab</li>
     </ul>
+
 </body>
 </html>
 <script>
@@ -37,9 +38,9 @@ var strClass="promoted ab cd";
 
 
 function byClass(strClass,eles){//eles表示的是筛选的范围
-	var reg=new RegExp("(^| )"+strClass+"( |$)");
+	var reg=new RegExp("(^| )"+strClass+"( |$)");//正则中匹配这个变量的如 “ promoted”开头是空格或是直接自身开头 结尾是直接结尾或者是以空格结尾的。
 	//var eles=document.body.getElementsByTagName("*");
-	var a=[]
+	var a=[];
 	for(var i=0;i<eles.length;i++){
 		var ele=eles[i];
 		if(reg.test(ele.className)){
@@ -49,9 +50,12 @@ function byClass(strClass,eles){//eles表示的是筛选的范围
 	return a;
 }
 var eles=document.body.getElementsByTagName("*");
- eles=byClass("promoted",eles);
+ eles=byClass("promoted",eles); //如果strClass是promoted匹配reg=new RegExp("(^| )"+strClass+"( |$)")的;就会把这一行给找到，如"tab  promoted ab"并添加到数组里返回给byClass赋给eles并，在这个筛选出来的范围里继续筛选；
  eles=byClass("ab",eles);
  eles=byClass("cd",eles);
+var str1="content";
+var  reg=RegExp("(^| )"+str+"( |$)");
+console.log(consoe);
 
 var a=byClass("tab");
 //以下是测试代码

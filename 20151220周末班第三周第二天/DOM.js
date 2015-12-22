@@ -1,15 +1,15 @@
 var DOM={};//命名空间，或叫名字空间。单例模式
 DOM.getIndex=function (ele){//获得ele的索引值
 	var index=0;
-	var p=ele.previousSibling;
-	while(p){
-		if(p.nodeType===1){
+	var p=ele.previousSibling;//查找哥哥节点
+	while(p){//查找到哥哥节点就一直循环
+		if(p.nodeType===1){//
 			index++	
 		}
 		p=p.previousSibling;
 	}
 	return index;
-}
+};
 
 DOM.siblings=function (ele){//获得ele的所有的元素兄弟节点
 	var nodes=ele.parentNode.childNodes;
@@ -21,7 +21,7 @@ DOM.siblings=function (ele){//获得ele的所有的元素兄弟节点
 		}
 	}
 	return a;
-}
+};
 
 function siblings(ele){
 	var a=[];
@@ -30,8 +30,8 @@ function siblings(ele){
 		if(p.nodeType==1){
 			//a.unshift(p);
 			a.push(p);
-			[0,1,2,3,4,5]
-			[5,4,3,2,1,0]
+			//[0,1,2,3,4,5]
+			//[5,4,3,2,1,0]
 		}
 		p=p.previousSibling;
 	}
@@ -59,7 +59,7 @@ DOM.prevSiblings=function (ele){//找ele的哥哥们
 		}
 	}
 	return a;
-}
+};
 DOM.nextSiblings=function (ele){//找弟弟们
 	var nodes=ele.parentNode.childNodes;
 	var a=[];
@@ -75,7 +75,7 @@ DOM.nextSiblings=function (ele){//找弟弟们
 	}
 	return a;
 	
-}
+};
 DOM.prev=function (ele){//找相邻的唯一的哥哥
 	/*var a=prevSiblings(ele);
 	return a[a.length-1]*/
@@ -91,7 +91,7 @@ DOM.prev=function (ele){//找相邻的唯一的哥哥
 	}
 	return null;//表示此方法应该有返回，但是得到不，则应该返回null
 	//如果不写这个return null，找不到结果，则返回undefined
-}
+};
 //null和undefined都表示没有，不存在
 //一个主动的结果，一个被动的结果
 DOM.next=function (ele){//找相邻的唯一的弟弟
@@ -104,7 +104,7 @@ DOM.next=function (ele){//找相邻的唯一的弟弟
 		n=n.nextSibling;
 	}
 	return null;//表示这个方法应该有返回值，但是找不到，则表示礼貌返回一个null
-}
+};
 
 DOM.closest=function (ele){//找相邻的弟弟和哥哥
 	//return [prev(ele),next(ele)]
@@ -114,7 +114,7 @@ DOM.closest=function (ele){//找相邻的弟弟和哥哥
 	if(p) a.push(p);
 	if(n) a.push(n);
 	return a;//a可以是空数组
-}
+};
 
 DOM.children=function(ele){
 	var children=ele.children;
@@ -125,7 +125,7 @@ DOM.children=function(ele){
 	//null和undefined都标识类型，用来标识不存在的状态
 	//null是个主动的状态，undefined是个无意的，被动的状态
 	//三种值类型，对象和function，undefined,但是把null也归到类型里来讲了
-	
+
 	//如果科学严谨的判断一个DOM元素是否支持某个属性呢？
 	//最好的办法是 typeof ele.attribute =="object";
 	//尽量不要用if(ele.attribute)的方法
@@ -137,18 +137,18 @@ DOM.children=function(ele){
 		for(var i=0;i<children.length;i++){
 			var child=children[i];
 			if(child.nodeType===1){
-				a.push(child);	
-			}		
+				a.push(child);
+			}
 		}
 		return a;
 	}
 	return children;//如果是标准浏览器，把children返回就好。如果能确保HTML页面里没有注释节点，那就不需要写这个方法了
-	
-}
+
+};
 
 DOM.children=function(ele){//获得ele的所有的元素子节点
 	var children=ele.children;
-	
+
 	if(typeof ele.nextElementSibling !="object"){
 		var a=[];
 		for(var i=0;i<children.length;i++){
@@ -156,9 +156,10 @@ DOM.children=function(ele){//获得ele的所有的元素子节点
 				a.push(children[i]);
 			}
 		}
+		return a;
 	}
 	return children;
-}
+};
 
 DOM.getElesByClass=function (str){
 	/*if(document.getElementsByClassName){
@@ -183,7 +184,7 @@ DOM.getElesByClass=function (str){
 		
 	}
 	return eles;
-}
+};
 
 DOM.addClass=function(ele,strClass){
 	ele.className+=" "+strClass;
@@ -192,10 +193,10 @@ DOM.addClass=function(ele,strClass){
 	if(!reg.test(ele.className)){
 		ele.className+=" "+strClass;
 	}
-}
+};
 
 DOM.removeClass=function(ele,strClass){
 	var  reg=RegExp("(^| )"+strClass+"( |$)","g");
 	
 	ele.className=ele.className.replace(reg," ");//后边不是空，是空格
-}
+};

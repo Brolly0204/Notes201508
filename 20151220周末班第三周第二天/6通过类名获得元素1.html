@@ -29,7 +29,7 @@
 </body>
 </html>
 <script>
-var strClass="ab";
+var strClass="content";
 /*/\w/;//常用字符
 /\W/;//非常用字符 
 //常用字符和非常用字符之间的那个逻辑位置，叫是\b（边界）
@@ -39,7 +39,10 @@ var reg=/\bab\b/
 "tab ab-cd"
 //就是说用\b来区分完整的类名，不是严谨的
 var reg=/(^| )promoted( |$)/*/
+console.log(strClass);
 var reg=new RegExp("(^| )"+strClass+"( |$)");
+console.log(reg.test("content"));
+console.log(reg);
 //var reg=new RegExp("\\b"+strClass+"\\b");
 var eles=document.body.getElementsByTagName("*");
 var a=[];

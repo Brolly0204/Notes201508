@@ -33,7 +33,7 @@
 function byClass(strClass,eles){//eles表示的是筛选的范围
 	var reg=new RegExp("(^| )"+strClass+"( |$)");
 	//var eles=document.body.getElementsByTagName("*");
-	var a=[]
+	var a=[];
 	for(var i=0;i<eles.length;i++){
 		var ele=eles[i];
 		if(reg.test(ele.className)){
@@ -50,17 +50,19 @@ var strClass="  promoted   ab cd  ";
 function getElesByClass(str){
 	str=str.replace(/^ +| +$/g,"");
 	//str=str.replace(/ {2,}/g," ");
+//	console.log("("+str+")");
 	var aClass=str.split(/ +/);
+//	console.log(aClass);
 	var eles=document.body.getElementsByTagName("*");
 	for(var i=0;i<aClass.length;i++){
 		eles=byClass(aClass[i],eles);
 	}
 	return eles;
 }
-
-var a=eles;
-//以下是测试代码
+var a=getElesByClass(strClass);
+//以下是测试代码 把找到的背景色变为红色；
 for(var i=0;i<a.length;i++){
 	a[i].style.backgroundColor="red";
 }
+console.log(a);
 </script>

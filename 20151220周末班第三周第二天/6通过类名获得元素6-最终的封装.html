@@ -48,11 +48,12 @@ function getElesByClass(str){
 		//eles=byClass(aClass[i],eles);
 		
 		var  reg=RegExp("(^| )"+aClass[i]+"( |$)");
+		console.log(reg);
 		var a=[];
 		for(var j=0;j<eles.length;j++){
 			var ele=eles[j];
 			if(reg.test(ele.className)){
-				a.push(ele);	
+				a.push(ele);
 			}
 		}
 		eles=a;//内部的筛选每完成一次，则更新一次eles
@@ -60,7 +61,7 @@ function getElesByClass(str){
 	}
 	return eles;
 }
-
+console.log(getElesByClass(strClass));
 var a=eles;
 //以下是测试代码
 for(var i=0;i<a.length;i++){

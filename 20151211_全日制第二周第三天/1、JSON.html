@@ -25,14 +25,15 @@
     // ->stringify:把JSON格式/普通格式的对象转换为JSON格式的字符串
     // ->parse:把JSON格式的字符串转换为JSON格式的对象
 
-    //    var data = [
-    //        {name: "王小波", age: 48},
-    //        {name: "王梦缘", age: 84}
-    //    ];
+        var data = [
+            {name: "王小波", age: 48},
+            {name: "王梦缘", age: 84}
+        ];
     //
-    //    var str = JSON.stringify(data);//->'[{"name":"王小波","age":48},{"name":"王梦缘","age":84}]'
-    //    console.log(JSON.parse(str));
-
+        var str = JSON.stringify(data);//->'[{"name":"王小波","age":48},{"name":"王梦缘","age":84}]'
+    var stri=JSON.parse(str);
+        console.log(stri);
+    console.log(str);
     //3、关于兼容的问题
     //在IE6、IE7中window下没有JSON这个属性
     //console.log(window.JSON); ->在IE6~7下输出的结果是undefined
