@@ -1,5 +1,4 @@
 var utils = {};
-
 //getCss:获取当前元素所有经过浏览器计算的样式
 utils.getCss = function (curEle, attr) {
     var val, reg;
@@ -18,7 +17,6 @@ utils.getCss = function (curEle, attr) {
     reg = /^-?(\d|([1-9]\d+))(\.\d+)?(px|pt|em|rem|vh|vw)$/;
     return reg.test(val) ? parseFloat(val) : val;
 };
-
 //offset:获取当前元素距离BODY的偏移量
 utils.offset = function (curEle) {
     var l = curEle.offsetLeft, t = curEle.offsetTop;
@@ -34,9 +32,7 @@ utils.offset = function (curEle) {
     }
     return {left: l, top: t};
 };
-
 //----------------------------------------------
-
 //prev:获取当前元素的上一个哥哥元素节点
 utils.prev = function (curEle) {
     if (curEle.previousElementSibling) {
@@ -59,8 +55,6 @@ utils.prevAll = function (curEle) {
     }
     return ary;
 };
-
-
 //next:获取当前元素的下一个弟弟元素节点
 utils.next = function (curEle) {
     if (curEle.nextElementSibling) {
@@ -72,7 +66,6 @@ utils.next = function (curEle) {
     }
     return nex;
 };
-
 //nextAll:获取当前元素的所有的弟弟元素节点
 utils.nextAll = function (curEle) {
     var ary = [];
@@ -83,8 +76,6 @@ utils.nextAll = function (curEle) {
     }
     return ary;
 };
-
-
 //sibling:获取当前元素的相邻两个兄弟元素节点
 utils.sibling = function (curEle) {
     var p = this.prev(curEle);
@@ -99,7 +90,6 @@ utils.sibling = function (curEle) {
 utils.siblings = function (curEle) {
     return this.prevAll(curEle).concat(this.nextAll(curEle));
 };
-
 
 //siblings:获取当前元素的索引
 utils.getIndex = function (curEle) {
