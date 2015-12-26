@@ -41,14 +41,16 @@
             window.clearTimeout(_this.timer);
             var curL = utils.getCss(_this, "left");
             if (curL > target) {//->向左走
-                if (curL - 10 <= target) {//->已经走到左边的边界了
+                if (curL - 10 <= target) {//->已经走到左边的边界了 如果此时curl-步长10小于此时target（0）就执行下面的代码
                     _this.style.left = target + "px";
                     move.call(_this, tarRight);
                     return;
                 }
                 _this.style.left = curL - 10 + "px";
             } else if (curL < target) {//->向右走
-                if (curL + 10 >= target) {//->已经走到右边的边界了
+                if (curL+10>= target) {//->已经走到右边的边界了如果此时1140加上步长10大于1141就执行下面的代码
+                    console.log(target);
+                    console.log(curL);
                     _this.style.left = target + "px";
                     move.call(_this, tarLeft);
                     return;

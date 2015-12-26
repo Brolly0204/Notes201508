@@ -50,12 +50,12 @@ var animate = (function () {
     //zhufengEffect:珠峰培训TWEEN算法公式
     //t->times 已经运动的时间, b->begin 开始的位置, c->change 总运动距离(结尾的位置-开始的位置), d->duration 总运动时间
     var zhufengEffect = {
-        //匀速
-        Linear: function (t, b, c, d) {
-            return c * t / d + b;
-        },
+            //匀速
+            Linear: function (t, b, c, d) {
+                return c * t / d + b;
+            },
         //指数衰减的反弹缓动
-        Bounce: {
+        Bounce: {//反弹
             easeIn: function (t, b, c, d) {
                 return c - zhufengEffect.Bounce.easeOut(d - t, 0, c, d) + b;
             },
@@ -180,7 +180,7 @@ var animate = (function () {
             }
         },
         //超过范围的三次方缓动
-        Back: {
+        Back: {//返回
             easeIn: function (t, b, c, d, s) {
                 if (s == undefined) s = 1.70158;
                 return c * (t /= d) * t * ((s + 1) * t - s) + b;
@@ -198,7 +198,7 @@ var animate = (function () {
             }
         },
         //指数衰减的正弦曲线缓动
-        Elastic: {
+        Elastic: {//弹性
             easeIn: function (t, b, c, d, a, p) {
                 if (t == 0) return b;
                 if ((t /= d) == 1) return b + c;

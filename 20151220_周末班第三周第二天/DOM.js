@@ -161,7 +161,7 @@ DOM.children=function(ele){//获得ele的所有的元素子节点
 	return children;
 };
 
-DOM.getElesByClass=function (str){
+DOM.getByClass=function (str){
 	/*if(document.getElementsByClassName){
 		return document.getElementsByClassName(str);	
 	}*/

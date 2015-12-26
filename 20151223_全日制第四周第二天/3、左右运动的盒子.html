@@ -66,13 +66,21 @@
                     oDiv.style.left = target + "px";
                     return;
                 }
-                oDiv.style.left = curL - 10 + "px";
+//                console.log(curL);//1140
+//                console.log(target);
+                oDiv.style.left = curL -10 + "px";
+                console.log(curL);
             } else if (curL < target) {//->向右走
                 if (curL >= target) {//->已经走到右边的边界了
                     oDiv.style.left = target + "px";
+//                    console.log( oDiv.style.left);
+
                     return;
                 }
+//                console.log(curL);//1140
+//                console.log(target);//1141
                 oDiv.style.left = curL + 10 + "px";
+//                console.log(curL);
             } else {
                 return;
             }
