@@ -82,6 +82,7 @@
     //4、如何修改元素的父级参照物
     //->我需要获取inner的外边框距离outer的内边框的偏移,上面相减的办法太麻烦,我们可以让outer变为inner的父级参照物(inner.offsetLeft)
     //我们想让父级参照物是谁,就让当前的元素增加一个叫做position:absolute/relative/fixed
+//    我们想让offsetParent和parentNode相同,就让parentNode增加一个叫做position:absolute/relative/fixed
     //    outer.style.position = "relative";
     //    //inner.offsetParent->outer
     //    console.log(inner.offsetLeft);//->40

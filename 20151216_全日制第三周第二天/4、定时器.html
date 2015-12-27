@@ -72,6 +72,11 @@
     //        }
     //    }
     //任务:自己回去用异步编程和作用的原理来详细的阐述为什么不能的原因
+    var count=0;
+    var timer=window.setTimeout(function (){
+        count++;
+    },0);
+    console.log(count);//->0;
 </script>
 </body>
 </html>
