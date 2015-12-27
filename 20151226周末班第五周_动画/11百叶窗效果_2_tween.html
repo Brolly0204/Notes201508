@@ -6,7 +6,7 @@
 <style type="text/css">
 #container{ width:1000px; height:300px; margin:10px auto; background:#ccc; position:relative; float:right;}
 #container div{ position:absolute;background:url(banner1.jpg)}
-#div1{ width:100px; height:100px; background:url(banner1.jpg) -500px -200px; }
+/*#div1{ width:100px; height:100px; background:url(banner1.jpg) -500px -200px; }*/
 </style>
 </head>
 
@@ -17,7 +17,7 @@ sprite
 3行10列
 <div id="container"></div>
 </body>
-<div id="div1"></div>
+<!--<div id="div1"></div>-->
 </html>
 <script src="tween.js"></script>
 <script>
@@ -39,7 +39,7 @@ for(var i=0;i<rows*cols;i++){
 		ele.l=l;
 		left=-400+"px";//	列索引号*宽度
 		backgroundPosition="-"+l+"px "+"-"+t+"px";
-	
+	    console.log(backgroundPosition);
 	}
 	a.push(ele);
 	container.appendChild(ele);
