@@ -12,36 +12,40 @@ var animate = (function () {
 
     //getCss:获取当前元素的指定样式值
     var getCss = function (curEle, attr) {
+        //var flag="getComputedStyle" in window";
         var val, reg;
-        if ("getComputedStyle" in window) {
+        if ("getComputedStyle" in window) {           //if(flag);
             val = window.getComputedStyle(curEle, null)[attr];
         } else {
             if (attr === "opacity") {
                 var temp = curEle.currentStyle["filter"];
                 reg = /^alpha\(opacity=((?:\d|(?:[1-9]\d+))(?:\.\d+)?)\)$/;
+                //reg=/^alpha\(opacity=(\d+(?:\.\d+)?)\)$/
                 temp = reg.exec(temp);
                 val = temp ? temp[1] / 100 : 1;
             } else {
                 val = curEle.currentStyle[attr];
             }
         }
-        reg = /^-?(\d|([1-9]\d+))(\.\d+)?(px|pt|em|rem|vh|vw)$/;
-        return reg.test(val) ? parseFloat(val) : val;
+        reg = /^-?(\d|([1-9]\d+))(\.\d+)?(px|pt|em|rem|vh|vw)?$/;
+        //reg=/^-?\d+(\.\d+)?(px|pt|em|rem)?$/;
+        return reg.test(val) ? parseFloat(val) : val;//(dispaly:block/none)是什么就返回什么
     };
 
     //setCss:设置当前元素的指定的样式
     var setCss = function (curEle, attr, value) {
+        //需要加单位的属性
         var reg = /^(width|height|top|left|right|bottom|((margin|padding)(Left|Top|Right|Bottom)?))$/;
         if (attr === "opacity") {
             value = parseFloat(value);
             value = value < 0 || value > 1 ? 1 + value : value;
-            curEle["style"]["opacity"] = value;
-            curEle["style"]["filter"] = "alpha(opacity=" + value * 100 + ")";
+            curEle["style"]["opacity"] = value;//标准浏览器
+            curEle["style"]["filter"] = "alpha(opacity=" + value * 100 + ")";//IE浏览器
         } else if (attr === "float") {
-            curEle["style"]["cssFloat"] = value;
-            curEle["style"]["styleFloat"] = value;
+            curEle["style"]["cssFloat"] = value;//标准浏览器
+            curEle["style"]["styleFloat"] = value;//IE浏览器
         } else if (reg.test(attr)) {
-            curEle["style"][attr] = isNaN(value) ? value : value + "px";
+            curEle["style"][attr] = isNaN(value) ? value : value + "px";//如果没单位 加上单位
         } else {
             curEle["style"][attr] = value;
         }
@@ -235,7 +239,7 @@ var animate = (function () {
             //1->Linear 2->Elastic-easeOut 3->Back-easeOut 4->Bounce-easeOut 5->Expo-easeIn
             var ary = ["Linear", "Elastic-easeOut", "Back-easeOut", "Bounce-easeOut", "Expo-easeIn"];
             for (var i = 0; i < ary.length; i++) {
-                if (effect === (i + 1)) {
+                if (effect === (i + 1)) {//1代表 数组里第一项
                     var curItem = ary[i].split("-");
                     var curItemFir = curItem[0];
                     var curItemTwo = curItem[1];

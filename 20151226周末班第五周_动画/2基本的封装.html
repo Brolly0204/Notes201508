@@ -29,21 +29,36 @@ function animate(ele,attr,target,duration){
 	var times=0;
 	var interval=15;
 	step();
-	
+//
 	function step(){
+
 		times+=interval;
 		if(times<duration){
 			ele.style[attr]=times/duration*change+begin+"px";
+
+
 		}else{
 			ele.style[attr]=target+"px";
 			//停止定时器的动作
+
 			window.clearInterval(timer);//这个timer不是下边42的返回值，如果step方法是由46行得到的，那timer就是46行的返回值
+
 		}
-		var timer=window.setTimeout(step,interval);
+		var timer=window.setInterval(step,interval);
+		console.log(timer);
 		//如果把timer定义在step里，那这个timer就没有什么意义了
+		//每一次清除的是上一次timer 但当前最后一次始终没被清除 还在继续执行
 	}
-	
-	//var timer=window.setInterval(step,interval);
+//	var timer=window.setInterval(step,interval);
+//	var timer=window.setTimeout(step,interval);
+
+//	console.log(timer);
+//	var timer=window.setInterval(function(){
+//		timer=window.setTimeout(step,interval);
+//		console.log(timer);
+//	},10);
+
+	console.log(timer);
 }
 
 var ele=document.getElementById("div1");

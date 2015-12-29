@@ -152,7 +152,7 @@ function getCss(ele,attr){
 	}else{//专门处理IE的方案
 		if(attr=="opacity"){
 			//filter:alpha(opacity=10)
-			var reg=/alpha\(opacity=(\d+)\)/
+			var reg=/alpha\(opacity=(\d+)\)/;
 			var str=ele.currentStyle.filter;
 			if(reg.test(str)){
 				RegExp.$1//这就是匹配的正则中的第一个分组的值	
@@ -211,7 +211,7 @@ function animate(ele,/* attr,target */oTarget,duration,effect,callback){
 		if(effect.length==1){
 			fnEffect=zhufengEffect.zfLinear;
 		}else if(effect.length==2){
-			fnEffect=zhufengEffect[effect[0]][effect[1]]
+			fnEffect=zhufengEffect[effect[0]][effect[1]];
 			//zhufengEffect["zfBounce"]["easeOut"];
 		}
 		

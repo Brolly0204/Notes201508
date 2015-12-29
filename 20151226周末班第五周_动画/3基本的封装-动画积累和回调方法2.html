@@ -32,7 +32,7 @@ function animate(ele,attr,target,duration){
 	var times=0;
 	var interval=15;
 	window.clearInterval(ele.timer);//目的：要执行清除积累的动画
-	
+//	console.log(ele.timer);
 	function step(){
 		times+=interval;
 		if(times<duration){
@@ -41,6 +41,7 @@ function animate(ele,attr,target,duration){
 			ele.style[attr]=target+"px";
 			
 			window.clearInterval(ele.timer);//这个timer不是下边42的返回值，如果step方法是由46行得到的，那timer就是46行的返回值
+			console.log(ele.timer);
 			ele.timer=null;
 		}
 		
@@ -57,13 +58,13 @@ ele.onclick=function(){
 	}else{
 		animate(this,"left",900,1000);	
 	}
-}
+};
 left.onclick=function(){
 	animate(ele,"left",0,1000);	
-}
+};
 right.onclick=function(){
 	animate(ele,"left",900,1000);
-}
+};
 
 
 //我可以判断出：这个元素是否在执行动画，如何它正在动画中，则不掺和

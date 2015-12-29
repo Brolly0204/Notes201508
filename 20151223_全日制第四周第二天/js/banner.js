@@ -1,6 +1,6 @@
 var dataAry = ["img/banner1.jpg", "img/banner2.jpg", "img/banner3.jpg", "img/banner4.jpg"];
 
-var outer = document.getElementById("outer");
+//var outer = document.getElementById("outer");
 var inner = document.getElementById("inner");
 var tip = document.getElementById("tip");
 var imgList = inner.getElementsByTagName("div");
@@ -15,19 +15,18 @@ function bindData() {
     //绑定图片的数据
     var str = "";
     for (var i = 0; i < dataAry.length; i++) {
-        str += "<div trueImg='" + dataAry[i] + "'></div>";
+        str += "<div trueImg='" + dataAry[i] + "'></div>";//有多少图片数据就在inner里创建多少个div
     }
-    str += "<div trueImg='" + dataAry[0] + "'></div>";
-    inner.innerHTML = str;
+    str += "<div trueImg='" + dataAry[0] + "'></div>";//在添加一个第六张 图片还是第一个
+    inner.innerHTML = str;//输出到inner里
 
     //绑定焦点的数据
     str = "";
     for (i = 0; i < dataAry.length; i++) {
         var cName = i === 0 ? "select" : null;
-        str += "<li class='" + cName + "'></li>";
+        str += "<li class='" + cName + "'></li>";//有多少数据创建多少个焦点
     }
-    tip.innerHTML = str;
-
+    tip.innerHTML = str;//输出到ul里；
     //把默认的宽度都要进行修改
     inner.style.width = (dataAry.length + 1) * 1000 + "px";
     tip.style.width = dataAry.length * 25 + "px";
@@ -54,10 +53,11 @@ window.setTimeout(delayImg, 500);
 function autoMove() {
     step++;
     if (step > 4) {
-        inner.style.left = 0 + "px";
-        step = 1;
+        inner.style.left = 0 + "px";//当为第五张时会瞬间变成第一张(直接变成对应左偏移的那张) 但一和五都一样看不出来
+        step = 1;  //然后计数从第二张开始计数
     }
     animate(inner, {left: -step * 1000}, 500);
+    //inner.style.left=this.step*-3000+"px"; 不用animate就会瞬间变；
     changeTip();
 }
 autoTimer = window.setInterval(autoMove, 3000);
