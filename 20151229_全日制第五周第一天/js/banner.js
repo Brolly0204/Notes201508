@@ -30,7 +30,7 @@ window.onload = function () {
     //把第一张放末尾一份,每隔3000ms执行一次运动,让$inner的left一直变小...当我们已经到达最后一张(和第一张长得一样),过了3000ms后,在往后走就没有了,此时我们让left立马回到第一张的位置,并且让step=2,这样的话接下来就会运动到第二张的位置了
     function autoMove() {
         step++;           //当为最后一张的时候step=5  step=5+1=6
-        if (step >= $count) {     //当step=5+1=$count=6 的时候
+        if (step >= $count) {     //当step=5是最后一张（1.jpg）（$count=6）当再点击时 step=6的时候是没有图片的 让它点击时瞬间变为第二张（1.jpg）
             $inner.css("left", -1000);//变为第二张 也就是和最后一张一样的那张
             step = 2;                //接着从第二张 step=1 继续下去 设为step=2
         }
@@ -50,8 +50,8 @@ window.onload = function () {
             tempStep = $innerTipList.length - 1;
         } else if (tempStep >= ($count - 1)) {//step=5时 也就是最后一张 1.jpg 让tip变为tiplist中的第1个，索引为0那个
             tempStep = 0;
-        } else {
-            tempStep--;//否则就是说step从1开始的 tip应该是索引第0个 step从2（tempStep=2）;开始的 tip应该是索引第1（tempStep--;）个
+        } else {                    //step=1（1.jpg）-tip（0）也就是 tempStep--
+            tempStep--;//否则就是说step从1到4之间的 tip应该是索引第0个 step从2（tempStep=2）;开始的 tip应该是索引第1（tempStep--;）个
         }
         $innerTipList.each(function (index, curLi) {
             curLi.className = index === tempStep ? "select" : null;
@@ -78,8 +78,8 @@ window.onload = function () {
             //->向左的按钮
             step--;
             if (step < 0) {//当到第二张1.jpg时 在点击左按钮时变为此时的第五张4.jpg，然后计数从step=3（3.jpg）开始
-                $inner.css("left", -($count - 2) * 1000);
-                step = $count - 3;
+                $inner.css("left", -($count - 2) * 1000);//$count=6;//step为0时第一张4.jpg 在点击左step=-1时 已经没有图片了 这时用left让它瞬间变成索引4（4.jpg）left-4000（412341）
+                step = $count - 3;//step从索引3开始 也就是第四张（3.jpg）
             }
             $inner.stop().animate({left: -step * 1000}, 500, "linear");
             changeTip();
