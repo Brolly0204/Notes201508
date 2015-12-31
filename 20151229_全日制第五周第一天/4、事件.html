@@ -55,7 +55,7 @@
     oDiv.onclick = function (e) {
         //在保准的浏览器中,我们通过形参来获取事件对象;但是在IE6~8下并没有传递给函数任何的参数值,也就是我们不能在通过e来获取信息了,IE浏览器把事件对象存储在了全局的event对象中了
         e = e || window.event;
-
+        console.log(e);
         e.target = e.target || e.srcElement;
         e.pageX = e.pageX || (e.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft));
         e.pageY = e.pageY || (e.clientY + (document.documentElement.scrollTop || document.body.scrollTop));
