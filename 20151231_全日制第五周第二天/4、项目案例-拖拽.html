@@ -69,8 +69,8 @@
         //获取当前的鼠标位置,计算鼠标偏移的距离,求出最新的top/left值例如（2-8）=-6说明往左减少了6
         var changeL = e.clientX - this["strX"];//改变距离=当前值-起始值  盒子的left位移距离和鼠标位移距离相等
         var changeT = e.clientY - this["strY"];//改变距离=当前值-起始值
-        var left = this["strL"] + changeL;
-        var top = this["strT"] + changeT;
+        var left = this["strL"] + changeL;//(this["strL"] +(-) changeL;
+        var top = this["strT"] + changeT;//(this["strT"] +(-) changeT;
 
         //做边界检测
         var minL = 0, maxL = winW - boxW, minT = 0, maxT = winH - boxH;
