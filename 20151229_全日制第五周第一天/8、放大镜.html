@@ -75,12 +75,12 @@
     var boxBigImg = boxBig.getElementsByTagName("img")[0];
 
 
-    //计算mark盒子的位置的  鼠标距离浏览器可视窗口的距离再减去box的左偏移+box的边框
+    //计算mark(遮罩层)盒子的位置的  鼠标距离浏览器可视窗口的距离再减去box的左偏移+box的边框
     function computedMark(e, mark) {
-        var left = e.clientX - boxL - (mark.offsetWidth / 2);
+        var left = e.clientX - boxL - (mark.offsetWidth / 2);//让鼠标在遮罩层mask中间
         var top = e.clientY - boxT - (mark.offsetHeight / 2);
 
-        //边界判断
+        //边界判断 -> mask
         var minL = 0, maxL = box.clientWidth - mark.offsetWidth;
         var minT = 0, maxT = box.clientHeight - mark.offsetHeight;
 

@@ -92,12 +92,10 @@
 
     function up(e) {
         e = e || window.event;
-
         //当鼠标抬起的时候我们的拖拽结束,我们把之前绑定的move/up移除掉
         this.onmousemove = null;
         this.onmouseup = null;
     }
-
     boxTop.onmousedown = down;
 </script>
 </body>

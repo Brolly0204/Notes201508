@@ -65,7 +65,7 @@
         this["strT"] = parseFloat(box.style.top);
         if (this.setCapture) {
             //this->boxTop
-            this.setCapture();
+            this.setCapture();//绑定鼠标和box
             this.onmousemove = move;
             this.onmouseup = up;
         } else {
@@ -103,7 +103,7 @@
     function up(e) {
         e = e || window.event;
         if (this.releaseCapture) {
-            this.releaseCapture();
+            this.releaseCapture();//解绑
             this.onmousemove = null;
             this.onmouseup = null;
         } else {

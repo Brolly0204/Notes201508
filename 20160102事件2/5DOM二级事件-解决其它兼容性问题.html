@@ -45,7 +45,7 @@ function bind(ele,type,fn){//把fn方法绑定给ele的type这个事件
 		for(var i=0;i<a.length;i++){
 			if(a[i].photo==fn)return;
 		}
-		var fnTemp=function (){fn.call(ele)}//这样做就可以使fn在执行的时候，让fn的this指向ele
+		var fnTemp=function (){fn.call(ele)};//这样做就可以使fn在执行的时候，让fn的this指向ele
 		fnTemp.photo=fn;//加的这个photo属性，只是让fnTemp和fn有关联
 
 		a.push(fnTemp);//仅仅是保存
@@ -96,7 +96,7 @@ function run(e){
 		}
 	}
 	
-	[fn1,fn2,fn3,fn4,fn5]
+//	[fn1,fn2,fn3,fn4,fn5]
 	//第二次触发click事件
 	//从i=0开始遍历执行数据里的方法，fn1执行，删除fn1,fn2，
 	//[fn3,fn4,fn5] i++,i=1 a[i]()
@@ -119,8 +119,6 @@ on(ele,"click",fn2);
 on(ele,"click",fn3);
 on(ele,"click",fn4);
 on(ele,"click",fn5);
-
-
 
 
 </script>

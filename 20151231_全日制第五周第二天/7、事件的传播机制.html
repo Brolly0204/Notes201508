@@ -77,12 +77,9 @@
     inner.addEventListener("click", function (e) {
         console.log("inner 冒泡")
     }, false);
-
     inner.addEventListener("click", function (e) {
         console.log("inner 捕获")
     }, true);
-
-
     outer.addEventListener("click", function (e) {
         console.log("outer 冒泡")
     }, false);
