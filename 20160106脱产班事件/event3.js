@@ -11,11 +11,9 @@ function on(ele,type,fn){
 		return;
 		
 	}
-	
-	
 	if(ele.addEventListener){
 		ele.addEventListener(type,fn,false);
-		//return ;	
+		return;
 	}else if(ele.attachEvent){
 		if(!ele["onevent"+type]){
 			ele["onevent"+type]=[];
@@ -40,8 +38,8 @@ function run(){
 	if(a){
 		if(!e.target){
 			e.target=e.srcElement;
-			e.stopPropagation=function(){e.cancelBubble=true;}
-			e.preventDefault=function(){e.returnValue=false;}
+			e.stopPropagation=function(){e.cancelBubble=true;};
+			e.preventDefault=function(){e.returnValue=false;};
 			e.pageX=(document.documentElement.scrollLeft||document.body.scrollLeft)+e.clientX;
 			e.pageY=(document.documentElement.scrollTop||document.body.scrollTop)+e.clientY;
 			
@@ -81,16 +79,11 @@ function processThis(obj,fn){
 	return function (e){fn.call(obj,e)}
 }
 
-
-
 function selfRun(selfType,e){///selfType是我们自己定义的事件类型，e是系统的事件对象
 	var a=this["selfEvent"+selfType];
-	
 	for(var i=0;i<a.length;i++){
-		
 		a[i].call(this,e);	
 	}
-	
 }
 
 

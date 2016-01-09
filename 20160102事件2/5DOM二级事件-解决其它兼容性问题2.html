@@ -1,150 +1,172 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>无标题文档</title>
-<style type="text/css">
-#div1{ width:100px; height:100px; background:red;}
-</style>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <style type="text/css">
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            -webkit-user-select: none;
+        }
+    </style>
 </head>
 
 <body>
 <div id="div1">div1
-	<a href="http://www.zhufengpeixun.cn">珠峰培训</a>
-	</div>
+    <a href="http://www.zhufengpeixun.cn">珠峰培训</a>
+</div>
 
 </body>
 </html>
 <script>
-var innerHTML="window";
-var ele=document.getElementById("div1");
-var counter=0;
-function fn1(e){alert(this.innerHTML);
-	counter++;
-	if(counter==2){
-		off(ele,"click",fn1);
-		off(ele,"click",fn2);
-	}
-}
-function fn2(e){alert(2)}
-function fn3(e){alert(3);	}
+    var innerHTML = "window";
+    var ele = document.getElementById("div1");
+    var counter = 0;
+    function fn1(e) {
+        alert(this.innerHTML);
+        counter++;
+        if (counter == 2) {
+            off(ele, "click", fn1);
+            off(ele, "click", fn2);
+        }
+    }
+    function fn2(e) {
+        alert(2)
+    }
+    function fn3(e) {
+        alert(3);
+    }
 
-function fn4(e){alert(4); 	}
-function fn5(e){alert(5);
-	/*counter++;
-	if(counter==2){
-		off(ele,"click",fn1);
-		off(ele,"click",fn2);
-	}*/
+    function fn4(e) {
+        alert(4);
+    }
+    function fn5(e) {
+        alert(5);
+        /*counter++;
+         if(counter==2){
+         off(ele,"click",fn1);
+         off(ele,"click",fn2);
+         }*/
 //	//e=e||event;
 //	e.preventDefault();
 //	e.stopPropagation();
-	
-}
-var fnTemp=null;
-function bind(ele,type,fn){//把fn方法绑定给ele的type这个事件行为
-	if(ele.addEventListener){
-		ele.addEventListener(type,fn,false);	
-	}else{
-		if(!ele["aEvent"+type]){
-			ele["aEvent"+type]=[];
-		}
-		var a=ele["aEvent"+type];
-		for(var i=0;i<a.length;i++){
-			if(a[i].photo==fn)return;
-		}
-		var fnTemp=function (){fn.call(ele)};//这样做就可以使fn在执行的时候，让fn的this指向ele
-		fnTemp.photo=fn;//加的这个photo属性，只是让fnTemp和fn有关联
 
-		a.push(fnTemp);//仅仅是保存
-		ele.attachEvent("on"+type,fnTemp);
-	}
-}
+    }
+    var fnTemp = null;
+    function bind(ele, type, fn) {//把fn方法绑定给ele的type这个事件行为
+        if (ele.addEventListener) {
+            ele.addEventListener(type, fn, false);
+        } else {
+            if (!ele["aEvent" + type]) {
+                ele["aEvent" + type] = [];//解决IE中this问题
+            }
+            var a = ele["aEvent" + type];
+            for (var i = 0; i < a.length; i++) {
+                if (a[i].photo == fn)return;
+            }
+            var fnTemp = function () {
+                fn.call(ele)
+            };//这样做就可以使fn在执行的时候，让fn的this指向ele
+            fnTemp.photo = fn;//加的这个photo属性，只是让fnTemp和fn有关联
 
-function unbind(ele,type,fn){
-	if(ele.removeEventListener){
-		ele.removeEventListener(type,fn,false);
-	}else{
-		
-		var a=ele["aEvent"+type];
-		if(a){
-			for(var i=0;i<a.length;i++){
-				if(a[i].photo==fn){
-					ele.detachEvent("on"+type,a[i]);
-					a.splice(i,1);
-					break;
-				}
-			}
-		}
-		
-	}
-}
-var count=0;
-on(ele,"click",fn1);
-on(ele,"click",fn2);
-on(ele,"click",fn3);
-on(ele,"click",fn4);
-on(ele,"click",fn5);
+            a.push(fnTemp);//仅仅是保存
+            ele.attachEvent("on" + type, fnTemp);
+        }
+    }
 
-function on(ele,type,fn){
-			count++;
-		console.log(count);
-	if(!ele["onEvent"+type]){ //没有容器就创建一个数组（容器）作为ele的属性
-		ele["onEvent"+type]=[];//如果数据不存在，则定义数组。
-		ele.attachEvent("on"+type,function(){run.call(this)});
-	}
-	var a=ele["onEvent"+type];
-	for(var i=0;i<a.length;i++){
-		if(a[i]==fn)return;	
-	}
-	a.push(fn);//所谓的事件绑定，就是把方法保存到数组里
-	bind(ele,type,run);
+    function unbind(ele, type, fn) {
+        if (ele.removeEventListener) {
+            ele.removeEventListener(type, fn, false);
+        } else {
 
-}
+            var a = ele["aEvent" + type];
+            if (a) {
+                for (var i = 0; i < a.length; i++) {
+                    if (a[i].photo == fn) {
+                        ele.detachEvent("on" + type, a[i]);
+                        a.splice(i, 1);
+                        break;
+                    }
+                }
+            }
 
-function run(e){
+        }
+    }
+    var count = 0;
+    on(ele, "click", fn1);
+    on(ele, "click", fn2);
+    on(ele, "click", fn3);
+    on(ele, "click", fn4);
+    on(ele, "click", fn5);
 
-	e=e||window.event;
-	var type=e.type;
-	if(!e.target){//IE中
-		e.target=e.srcElement;//事件源
-		e.stopPropagation=function(){e.cancelBubble=true;};//阻止冒泡传播
-		e.preventDefault=function(){e.returnValue=false;};//阻止默认行为
-		e.pageX=(document.documentElement.scrollLeft||document.body.scrollLeft)+e.clientX;
-		e.pageY=(document.documentElement.scrollTop||document.body.scrollTop)+e.clientY;
-	}
-	var a=this["onEvent"+type];
-	for(var i=0;i< a.length;i++){
+    function on(ele, type, fn) {
+        if (!ele["onEvent" + type]) { //没有容器就创建一个数组（容器）作为ele的属性
+            ele["onEvent" + type] = [];//如果数据不存在，则定义数组。
+            ele.attachEvent("on" + type, function () {//针对于IE
+                run.call(ele)//attachEvent中的this指的是window并不是绑定事件的元素
+                console.log(this);
+            });
+        }
+        var a = ele["onEvent" + type];
+        for (var i = 0; i < a.length; i++) {
+            if (a[i] == fn)return;
+        }
+        a.push(fn);//所谓的事件绑定，就是把方法保存到数组里
+//        bind(ele, type, run);//通用方法
+    }
 
-		console.log(i);
-		if(typeof a[i]=="function"){
-			a[i].call(this,e);
+    function run(e) {
+        e = e || window.event;
+        var type = e.type;
+        if (!e.target) {//IE中
+            e.target = e.srcElement;//事件源
+            e.stopPropagation = function () {
+                e.cancelBubble = true;
+            };//阻止冒泡传播
+            e.preventDefault = function () {
+                e.returnValue = false;
+            };//阻止默认行为
+            e.pageX = (document.documentElement.scrollLeft || document.body.scrollLeft) + e.clientX;
+            e.pageY = (document.documentElement.scrollTop || document.body.scrollTop) + e.clientY;
+        }
+        var a = this["onEvent" + type];
+        for (var i = 0; i < a.length; i++) {
 
-		}else{
-			a.splice(i,1);
-			i--;
-		}
-	}
-	
+            console.log(i);
+            if (typeof a[i] == "function") {
+                a[i].call(this, e);
+
+            } else {
+                i--;
+                a.splice(i, 1);
+            }
+        }
+//        a.forEach(function(fn){//遍历数组方式 forEach里arguments里有三个参数
+//            fn();              //分别是 数组里每一项、对应索引、数组本身
+//        });
 //	[fn1,fn2,fn3,fn4,fn5]
-	//第二次触发click事件
-	//从i=0开始遍历执行数据里的方法，fn1执行，删除fn1,fn2，
-	//[fn3,fn4,fn5] i++,i=1 a[i]()
-}
-function off(ele,type,fn){
-	var a=ele["onEvent"+type];
-	if(a){
-		for(var i=0;i<a.length;i++){
-			if(a[i]==fn){
-				//a.splice(i,1);//直接删除容易造成数组塌陷
-				a[i]=null;
-				break;	
-			}
-		}
-	}
-}
+        //第二次触发click事件
+        //从i=0开始遍历执行数据里的方法，fn1执行，删除fn1,fn2，
+        //[fn3,fn4,fn5] i++,i=1 a[i]()
+    }
+//    on绑定->off移除事件->
+//    bind绑定->unbind移除事件
+    function off(ele, type, fn) {
+        var a = ele["onEvent" + type];
+        if (a) {
+            for (var i = 0; i < a.length; i++) {
+                if (a[i] == fn) {
+                    //a.splice(i,1);//直接删除容易造成数组塌陷
+                    a[i] = null;
+                    break;
+                }
+            }
+        }
+    }
 
-//var oA=document.getElementsByTagName("a").item(0);
-//on(oA,"click",fn5);
-	
+    //var oA=document.getElementsByTagName("a").item(0);
+    //on(oA,"click",fn5);
+
 </script>

@@ -43,7 +43,7 @@ function move(e){
 	
 	//move方法的执行，就是mousemove事件的触发。move方法执行一次，则是mousemove事件触发一次。鼠标每滑动一次，其实move方法会执行好多次
 	//如果是执行好多次的move方法，则“下”一次执行的时间戳-“上”一次的时间戳就是两次mousemove事件的时间差。算出这个时间差，当成“时间单位”，看这个时间单位里移动的距离，就可以当成速度
-	this.prevTime//前一次的时间戳
+	this.prevTime;//前一次的时间戳
 	if(!this.prevTime){
 		this.prevTime=new Date;	
 		this.prevPosi=this.offsetLeft;

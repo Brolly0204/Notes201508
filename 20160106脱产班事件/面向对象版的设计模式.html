@@ -42,7 +42,7 @@ EventEmitter.prototype.fire=function(type){//相当于学过的run方法
 		}
 	}
 	
-}
+};
 
 EventEmitter.prototype.off=function(type,fn){
 	var a=this["event"+type];
@@ -54,7 +54,7 @@ EventEmitter.prototype.off=function(type,fn){
 			}
 		}
 	}
-}
+};
 
 function Kettle(){}
 Kettle.prototype=new EventEmitter;
@@ -63,10 +63,9 @@ Kettle.prototype.boiling=function(){
 	var _this=this;
 	setTimeout(function(){
 		console.log("水已开");
-		
 		_this.fire("boiling");	//发布自定义事件，"boiling"就是指定的事件类型。也叫通知
 	},5000);
-}
+};
 function clean(){
 	console.log("扫个地！");	
 }

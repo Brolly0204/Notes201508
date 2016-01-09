@@ -21,7 +21,7 @@ div{ width:100px; height:100px; background:red; position:absolute; left:0; top:0
 var oDiv1=document.getElementById("div1");
 var oDiv2=document.getElementById("div2");
 var oDiv3=document.getElementById("div3");
-on(oDiv1,"mousedown",down);
+on(oDiv1,"mousedown",down);//通过on方法把down添加到数组里
 on(oDiv2,"mousedown",down);
 on(oDiv3,"mousedown",down);
 //down,up,move A模块
@@ -30,9 +30,9 @@ on(oDiv3,"mousedown",down);
 //现在的问题是把拖拽和动画搅在了一起
 
 //不同的模块之间，既是独立的，还可以通过某种途径接合在一起
-
-on(oDiv1,"selfDragStart",clearEffect);
-on(oDiv1,"selfDragging",getSpeed);
+//通过on方法它fly、drop等方法添加到数组里 selfRun方法将通过on方法添加到数组里的按顺序执行
+on(oDiv1,"selfDragStart",clearEffect); //当你再按下的时候清除上次的 fly和drag动画
+on(oDiv1,"selfDragging",getSpeed); //move里执行 从move执行时 获取到速度
 on(oDiv1,"selfDragEnd",fly);
 on(oDiv1,"selfDragEnd",drop);
 </script>
