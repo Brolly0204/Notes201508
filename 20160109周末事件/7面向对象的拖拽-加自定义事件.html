@@ -4,12 +4,14 @@
 <meta charset="utf-8">
 <title>无标题文档</title>
 <style type="text/css">
-#div1{ width:100px; height:100px; background:red; position:absolute; top:0; left:0; cursor:move; -webkit-user-select:none;}
+div{ width:100px; height:100px; background:red; position:absolute; top:0; left:0; cursor:move; -webkit-user-select:none;}
 </style>
 </head>
 
 <body>
-<div id="div1"></div>
+<div id="div1">1</div>
+<div id="div2">2</div>
+<div id="div3">3</div><div id="div4">4</div>
 </body>
 </html>
 <script src="event.js"></script>
@@ -25,4 +27,9 @@ obj.on("dragstart",clearEffect);
 obj.on("drag",getSpeed);
 obj.on("dragend",fly);
 obj.on("dragend",drop);
+var obj2=new Drag(div2);
+var obj3=new Drag(div3);
+var obj4=new Drag(div4);
+obj3.limited({l:0,r:300,t:0,b:200});//
+obj2.border();
 </script>

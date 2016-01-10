@@ -50,10 +50,10 @@ function Drag(ele){
 }
 Drag.prototype=new EventEmitter;//让这两个类组合在一起，就使Drag类具备了和其它行为能够有关联的功能了，就是使Drag类具备了和其它功能联系的通道
 Drag.prototype.down=function(e){
-	this.x=this.ele.offsetLeft;
+	/*this.x=this.ele.offsetLeft;
 	this.y=this.ele.offsetTop;
 	this.mx=e.pageX;
-	this.my=e.pageY;
+	this.my=e.pageY;*/
 	if(this.ele.setCapture){
 		this.ele.setCapture();
 		on(this.ele,"mousemove",this.MOVE);
@@ -63,18 +63,12 @@ Drag.prototype.down=function(e){
 		on(document,"mouseup",this.UP);
 	}
 	e.preventDefault();
-	//this;//drag，drag--"dragstart"--"drag"---"dragend"
-	//this是我们自己创建的，完全我们自己掌控的对象，那我们基本上就可随意的定义属性。现在我们再给Drag的实例创建事件，就可以不必考虑是否会和DOM的原生事件冲突的问题了。
-	//ele//DOM对象，DOM对象有很多的天生的属性或方法，那么我们再自定义一些属性的时候，就要考虑是不是会和原来属性冲突
-	//在给DOM对象上创建自定义属性的时候会存在风险：冲突
-	
-	//ele.x,ele.y,ele.l,ele,t,ele.mx
-	this.run("dragstart",e);//通知，发布事件。只有在这个方法里像这样执行的this.run方法，其它的行为（function)才可以绑定这个事件。
-	//设计上原则和执行的顺序没有关系
+
+	this.run("dragstart",e);
 }
 Drag.prototype.move=function(e){
-	this.ele.style.left=this.x+e.pageX-this.mx+"px";
-	this.ele.style.top=this.y+e.pageY-this.my+"px";
+/*	this.ele.style.left=this.x+e.pageX-this.mx+"px";
+	this.ele.style.top=this.y+e.pageY-this.my+"px";*/
 	this.run("drag",e);
 }
 Drag.prototype.up=function(e){
