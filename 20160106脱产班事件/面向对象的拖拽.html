@@ -35,7 +35,7 @@ function Drag(ele){//构造方法，负责初始化
 	this.DOWN=processThis(this,this.down);
 	this.MOVE=processThis(this,this.move);
 	this.UP=processThis(this,this.up);
-	on(ele,"mousedown",this.DOWN);
+	on(this.ele,"mousedown",this.DOWN);
 }
 //活的对象，就是指一个作用域，作用域里的变量可以看成是这个活动对象的属性
 Drag.prototype.down=function(e){
@@ -51,30 +51,29 @@ Drag.prototype.down=function(e){
 		on(document,"mousemove",this.MOVE);
 		on(document,"mouseup",this.UP);
 	}
-	
 	e.preventDefault();
-}
+};
 
 Drag.prototype.move=function(e){
 	this.ele.style.left=this.x+(e.pageX-this.mx)+"px";
 	this.ele.style.top=this.y+(e.pageY-this.my)+"px";
-}
+};
 
 Drag.prototype.up=function(e){
 	if(this.ele.releaseCapture){
 		off(this.ele,"mousemove",this.MOVE);
 		off(this.ele,"mouseup",this.UP);
-		this.ele.releaseCature();	
+		this.ele.releaseCapture();
 	}else{
 		off(document,"mousemove",this.MOVE);
 		off(document,"mouseup",this.UP);	
 	}
-}
-new Drag(div1);//只需new一下，就可以实现对参数div1的拖拽了
+};
+var f=new Drag(div1);//只需new一下，就可以实现对参数div1的拖拽了
 //new Drag(div2);
 //new Drag(div3);
 //var s="abcd";1,2,3,4;
-
+console.log(f);
 
 
 </script>

@@ -1,4 +1,4 @@
-function on(ele,type,fn){
+function on(ele,type,fn){//on用来约定事件（系统事件和自定义事件）
 	if(/^self/.test(type)){
 		if(!ele["selfEvent"+type]){
 			ele["selfEvent"+type]=[];
@@ -9,7 +9,6 @@ function on(ele,type,fn){
 		}
 		a.push(fn);
 		return;
-		
 	}
 	if(ele.addEventListener){
 		ele.addEventListener(type,fn,false);
@@ -28,10 +27,9 @@ function on(ele,type,fn){
 		}
 		a.push(fn);
 	}
-	
 }
 
-function run(){
+function run(){//run执行约定事件里的方法
 	var e=window.event;
 	var type=e.type;
 	var a=this["onevent"+type];
@@ -42,7 +40,6 @@ function run(){
 			e.preventDefault=function(){e.returnValue=false;};
 			e.pageX=(document.documentElement.scrollLeft||document.body.scrollLeft)+e.clientX;
 			e.pageY=(document.documentElement.scrollTop||document.body.scrollTop)+e.clientY;
-			
 		}
 		
 		for(var i=0;i<a.length;i++){

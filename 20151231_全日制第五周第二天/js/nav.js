@@ -1,5 +1,5 @@
 var nav = document.getElementById("nav");
-var oLis = nav.getElementsByTagName("li");//->后去后代所有的li
+var oLis = nav.getElementsByTagName("li");//->获取后代所有的li
 
 for (var i = 0; i < oLis.length; i++) {
     var oLi = oLis[i];

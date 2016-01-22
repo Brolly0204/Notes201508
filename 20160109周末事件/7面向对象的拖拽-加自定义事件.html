@@ -20,16 +20,17 @@ div{ width:100px; height:100px; background:red; position:absolute; top:0; left:0
 <script>
 
  
-var obj=new Drag(div1);
+var obj=new Drag(div1);//把要操作的当形参元素传进去
 //ele.addEventListener("click",fn);
 //EventTarget
-obj.on("dragstart",clearEffect);
-obj.on("drag",getSpeed);
-obj.on("dragend",fly);
-obj.on("dragend",drop);
-var obj2=new Drag(div2);
+//obj这个实例调用原型上的拖拽方法
+obj.on("dragstart",clearEffect);//down的时候清除定时器
+obj.on("drag",getSpeed);//move的时候获取速度
+obj.on("dragend",fly);//up的时候执行fly
+obj.on("dragend",drop);//up的时候执行drop
+var obj2=new Drag(div2);//把要操作的当形参元素传进去
 var obj3=new Drag(div3);
 var obj4=new Drag(div4);
-obj3.limited({l:0,r:300,t:0,b:200});//
-obj2.border();
+obj3.limited({l:0,r:300,t:0,b:200});//实例调用原型上的方法限定范围
+obj2.border();//实例调用原型上的加边框方法
 </script>
