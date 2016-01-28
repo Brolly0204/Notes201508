@@ -13,6 +13,7 @@
     //2、在callBack方法中实现我们分页的需求
     var callBack = function (data) {
         dataAry = data;
+        //计算页数
         totalPage = Math.ceil(data.length / count);
 
         //1)首先绑定我们的页码
@@ -51,6 +52,10 @@
 
             str += "<li num='" + cur["num"] + "'>";
             for (var key in cur) {
+                if(key=="sex"){
+                    cur[key]= cur["sex"]===1||cur["sex"]==="男"?"男":"女";
+
+                }
                 str += "<span>" + cur[key] + "</span>";
             }
             str += "</li>";
@@ -144,7 +149,7 @@ function createXHR() {
         } else if (new ActiveXObject("Msxml2.XMLHTTP")) {
             xhr = new ActiveXObject("Msxml2.XMLHTTP");
         } else if (new ActiveXObject("Msxml3.XMLHTTP")) {
-            xhr = new ActiveXObject("Msxml2.XMLHTTP");
+            xhr = new ActiveXObject("Msxml3.XMLHTTP");
         }
     }
     return xhr;

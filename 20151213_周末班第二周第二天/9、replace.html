@@ -46,7 +46,9 @@
     str = str.replace(reg, function () {
         //console.log(arguments[1]);//获取每一次执行匿名函数我们正则捕获到的第一个分组中的内容
     });
-
+var reg=/([a-z]+) +([a-z]+) +([a-z]+)/i;
+    var str="Happy New Year";
+    alert(str.replace(reg,"$3 $2 $1"));
     //RegExp.$1 ->获取第一个分组捕获的内容
 </script>
 </body>

@@ -8,7 +8,7 @@
 <script type="text/javascript">
     (function () {
         //获取当前页面的URL地址
-        //->console.log(window.location.href);
+       console.log(window.location.href);
         //->http://localhost:.../detail.html?num=003&num2=004
 
         //获取URL传递进来的参数值
@@ -25,6 +25,7 @@
             }
 
             var str = "";
+            res["sex"]=res["sex"]===1?"男":"女";
             str += "学号:" + res["num"];
             str += "性别:" + res["sex"];
             str += "分数:" + res["score"];
@@ -53,7 +54,7 @@
             } else if (new ActiveXObject("Msxml2.XMLHTTP")) {
                 xhr = new ActiveXObject("Msxml2.XMLHTTP");
             } else if (new ActiveXObject("Msxml3.XMLHTTP")) {
-                xhr = new ActiveXObject("Msxml2.XMLHTTP");
+                xhr = new ActiveXObject("Msxml3.XMLHTTP");
             }
         }
         return xhr;
