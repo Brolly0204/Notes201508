@@ -14,6 +14,7 @@
         for (var i = 0; i < tempAry.length; i++) {
             var cur = tempAry[i];
             if (obj[cur] == cur) {
+                //将这一项变成最后一项
                 tempAry[i] = tempAry[tempAry.length - 1];
                 tempAry.length--;
                 i--;
@@ -25,7 +26,7 @@
         return tempAry;
     }
 
-    //利用"冒泡排序思想"实现的排序方法
+    //利用"冒泡排序思想"实现的排序方法 从大到小
     function sortAry(ary) {
         var tempAry = ary.slice(0);
         var temp = null;

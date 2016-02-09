@@ -54,7 +54,6 @@
     var oLis = document.getElementById("ul1").getElementsByTagName("li");
     for (var i = 0; i < oLis.length; i++) {
         oLis[i].style.backgroundColor = ary[i];
-
         oLis[i].index = i;
         oLis[i].onclick = function () {
             document.body.style.backgroundColor = ary[this.index];

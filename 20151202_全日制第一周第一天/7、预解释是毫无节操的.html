@@ -31,19 +31,21 @@
     //预解释的时候:fn=xxxfff000
     //    fn();//->"ok"
     //    function fn() {
-    //        console.log("ok");
+    //        console.log(`"ok");
     //    }
     //    fn();//->"ok"
 
 
-    //3、函数体中return下面的代码都不在执行了,但是下面的代码需要参加预解释；而return后面的东西是需要处理的，但是由于它是当做一个值返回的，所以不进行预解释；
-    //    var total = 300;
-    //    function fn() {
-    //        console.log(total);
-    //        return function sum() {};//return是把函数中的值返回到函数的外面,这里是把function对应的内存地址返回的到函数的外面,例如:return xxxfff111;函数体中return下面的代码都不在执行了
-    //        var total = 10;
-    //    }
-    //    fn();
+    //3、函数体中return下面的代码都不在执行了,但是下面的代码需要参加预解释；而return后面的东西是需要处理的，但是由于它是
+    // 当做一个值返回的，所以不进行预解释；
+        var total = 300;
+        function fn() {
+            console.log(total);
+            return function sum() {};//return是把函数中的值返回到函数的外面,这里是把function对应的内存地址返回的到函数的外面,
+            // 例如:return xxxfff111;函数体中return下面的代码都不在执行了
+            var total = 10;
+        };
+        fn()
 
     //4、匿名函数的function在全局作用域下是不进行预解释的
     //匿名函数之自执行函数:定义和执行一起完成了
@@ -68,17 +70,17 @@
     //fn=xxxfff222; 声明+定义(只需要执行定义即可)
     //->fn=xxxfff222
 
-    fn();//->2
-    function fn() {
-        console.log(1);
-    }
-    fn();//->2
-    var fn = 13;//var fn;跳过  fn=13(在预解释的时候没有执行这句话赋值的操作)
-    fn();//->13() Error:fn is not a function
-    function fn() {
-        console.log(2);
-    }
-    fn();
+//    fn();//->2
+//    function fn() {
+//        console.log(1);
+//    }
+//    fn();//->2
+//    var fn = 13;//var fn;跳过  fn=13(在预解释的时候没有执行这句话赋值的操作)
+//    fn();//->13() Error:fn is not a function
+//    function fn() {
+//        console.log(2);
+//    }
+//    fn();
 
 
     //JS中作用域只有两种：window全局作用域、函数执行形成的私有作用域
