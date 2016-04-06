@@ -11,7 +11,7 @@
 <script>
 function fn1(){
 	console.log(arguments.callee==fn1);//callee是指当前执行的这个方法
-	//callee上还会有一个属性叫caller，caller是调用callee的那个方法
+	//callee上还会有一个属性叫caller，caller是调用callee的那个方法->fn2
 	console.log(arguments.callee.caller==fn2);
 }
 function fn2(){

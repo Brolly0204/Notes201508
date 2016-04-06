@@ -13,7 +13,7 @@
 
         //获取URL传递进来的参数值
         var obj = queryURLParmeter(window.location.href);
-
+       console.log(obj);
         var callBack = function (data) {
             var res = null;
             for (var i = 0; i < data.length; i++) {
@@ -27,8 +27,8 @@
             var str = "";
             res["sex"]=res["sex"]===1?"男":"女";
             str += "学号:" + res["num"];
-            str += "性别:" + res["sex"];
-            str += "分数:" + res["score"];
+            str += " 性别:" + res["sex"];
+            str += " 分数:" + res["score"];
             document.body.innerHTML += str;
         };
 
@@ -66,6 +66,14 @@
             var fir = res[1], tww = res[2];
             obj[fir] = tww;
             res = reg.exec(url);
+        }
+        return obj;
+    }
+    function queryURLParmete(url){
+        var reg=/([^?&=]+)=([^?&=]+)/g,obj={},res=reg.exec(url);
+        while(res){
+            var fir=res[1],tww=res[2];
+            res=reg.exec(url);
         }
         return obj;
     }

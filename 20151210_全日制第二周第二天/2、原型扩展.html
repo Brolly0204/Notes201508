@@ -52,7 +52,7 @@
     //fn1.call.call(fn2);
     //a、首先执行最后一个call方法,里面的this是fn1.call
     //b、让最后一个call中的this执行 ->fn1.call() ->默认第一个call中的this是fn1
-    //c、让最后一个call中的this(fn1.call)的this变为fn2 ->fn1.call里面的this变为fn2 -> fn2.call()
+    //c、让最后一个call中的this(fn1.call)的this变为fn2 ->fn1.call里面的this由fn1变为fn2 -> fn2.call()
     //d、其实也就相当于让fn2执行
 
     //fn1.call.call.call.call.call(fn2); ->2

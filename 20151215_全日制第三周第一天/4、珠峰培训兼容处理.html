@@ -15,13 +15,13 @@
     //1、try catch 通过捕获异常信息来检测是否兼容
     //前提：在try中执行的代码,遇到不兼容的浏览器需要抛出异常错误后我们才可以检测到,也就是不兼容报错才可以使用try catch检测兼容
     //在IE6~8下执行我们的getComputedStyle方法出现了浏览器异常错误: “对象不支持“getComputedStyle”属性或方法
-    //    var val = null;
-    //    try {
-    //        val = window.getComputedStyle(oDiv, null).height;
-    //    } catch (e) {
-    //        val = oDiv.currentStyle.height;
-    //    }
-    //    console.log(val);
+//        var val = null;
+//        try {
+//            val = window.getComputedStyle(oDiv, null).height;
+//        } catch (e) {
+//            val = oDiv.currentStyle.height;
+//        }
+//        console.log(val);
 
     //2、对应大部分常用到的方法的兼容性处理,我们可以采用判断是否存在的方式来判断兼容性问题
     //getComputedStyle:我们可以通过window下是否存在getComputedStyle这个属性来检测是否兼容

@@ -39,9 +39,9 @@
     //console.log(window.JSON); ->在IE6~7下输出的结果是undefined
 
     //不兼容的情况下如何把JSON格式的字符串转换为JSON格式的对象? ->使用eval，但是记住最好是手动在字符串左右两边加上小括号
-    //    var str = '[{"name":"王小波","age":48},{"name":"王梦缘","age":84}]';
-    //    var data = eval("(" + str + ")");//->兼容的话我们使用JSON.parse(str)
-    //    console.dir(data);
+        var str = '[{"name":"王小波","age":48},{"name":"王梦缘","age":84}]';
+        var data = eval("(" + str + ")");//->兼容的话我们使用JSON.parse(str)
+        console.dir(data);
 </script>
 </body>
 </html>

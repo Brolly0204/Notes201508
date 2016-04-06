@@ -45,7 +45,7 @@
             // 例如:return xxxfff111;函数体中return下面的代码都不在执行了
             var total = 10;
         };
-        fn()
+        fn();
 
     //4、匿名函数的function在全局作用域下是不进行预解释的
     //匿名函数之自执行函数:定义和执行一起完成了
@@ -85,6 +85,12 @@
 
     //JS中作用域只有两种：window全局作用域、函数执行形成的私有作用域
     //{name:""} if(){} for(){} while(){} switch(){} 这些都不会产生作用域
+
+        function fn() {
+//            console.log(1);
+        }
+    var fn;
+    console.log(fn);
 </script>
 </body>
 </html>

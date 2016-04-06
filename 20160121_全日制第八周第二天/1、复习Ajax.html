@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
-<body>
+<body >
 <script type="text/javascript">
     //1、同源/非同源
     //协议:http、https、ftp...
@@ -25,7 +25,7 @@
             } else if (new ActiveXObject("Msxml2.XMLHTTP")) {
                 xhr = new ActiveXObject("Msxml2.XMLHTTP");
             } else if (new ActiveXObject("Msxml3.XMLHTTP")) {
-                xhr = new ActiveXObject("Msxml2.XMLHTTP");
+                xhr = new ActiveXObject("Msxml3.XMLHTTP");
             }
         }
         return xhr;

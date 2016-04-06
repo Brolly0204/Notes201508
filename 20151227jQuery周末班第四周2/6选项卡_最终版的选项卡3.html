@@ -133,7 +133,7 @@ $(function(){//window.onload
 	//var i,n,m,w;
 	$("li.tab").click(function(){
 		var n=$(this).addClass("selectedTab").siblings().removeClass("selectedTab").end().index();
-		$(this).parent().next().children("div").removeClass("selectedContent").get(n).className="content selectedContent"//.addClass("selectedContent");
+		$(this).parent().next().children("div").removeClass("selectedContent").get(n).className="content selectedContent";//.addClass("selectedContent");
 		//get返回的JS 原生DOM对象
 		
 	})

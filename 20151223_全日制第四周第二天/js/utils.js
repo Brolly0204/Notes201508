@@ -8,14 +8,13 @@ utils.getCss = function (curEle, attr) {
     } else {
         if (attr === "opacity") {
             var temp = curEle.currentStyle["filter"];
-            reg = /^alpha\(opacity=((?:\d|(?:[1-9]\d+))(?:\.\d+)?)\)$/;
-            temp = reg.exec(temp);
-            val = temp ? temp[1] / 100 : 1;
+            reg = /^alpha\(opacity=(\d+(?:\.\d+)?)\)$/;
+           val= reg.text(val)?reg.exec(val)/100:1;
         } else {
             val = curEle.currentStyle[attr];
         }
     }
-    reg = /^-?(\d|([1-9]\d+))(\.\d+)?(px|pt|em|rem|vh|vw)$/;
+    reg = /^-?\d+(\.\d+)?(px|pt|em|rem|vh|vw)?$/;
     return reg.test(val) ? parseFloat(val) : val;
 };
 
